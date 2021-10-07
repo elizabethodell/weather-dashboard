@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./styles/jass_dontChange.css" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="styles/styles - Copy/jass_dontChange.css" />
+    <link rel="stylesheet" href="styles/styles - Copy/stylesheet.css" />
     <title>Weather Dashboard</title>
   </head>
 
   <body>
     <header
-      class="container-fluid text-center text-white bg-dark p-2 weather-header"
+      class="container-fluid text-center text-white bg-dark p-2 weather-header head"
     >
       <h1>Weather Dashboard</h1>
     </header>
@@ -53,22 +53,79 @@
           </div>
         </aside>
 
+
+        <!--Today's forecast-->
         <div class="col-lg-9 pb-3">
           <section
             id="today"
-            class="mt-3"
+            class="mt-3 todayContainer"
             role="region"
             aria-live="polite"
           >
           <!-- This section will contain info provided by JS -->
+          <h1 class="city" ></h1>
+          <p class="temp"> </p>
+          <p class="wind"> </p>
+          <p class="humidity"> </p>
+          <p class="uvIndex"> </p>
+
         </section>
+        <h1>5 Day Forecast: </h1>
           <section
             id="forecast"
             class="row mt-3"
             role="region"
             aria-live="polite"
           >
+  
           <!-- This section will contain info provided by JS -->
+              <!--Day 1-->
+              <div class="icons">
+                <h4 id="day1Date"></h4>
+                <p class="weather" id="day1"></p>
+                <div class="image"><img src="" class="imgClass" id="img1"></div>
+                <p class="temperatureValues" id="day1Temp"></p>
+                <p class="humidityValues" id="day1Humidity"></p>
+                <p class="windValues" id="day1Wind"></p>
+              </div>
+              <!--Day 2-->
+              <div class="icons">
+                <h4 id="day2Date"></h4>
+                <p class="weather" id="day2"></p>
+                <div class="image"><img src="" class="imgClass" id="img2"></div>
+                <p class="temperatureValues" id="day2Temp"></p>
+                <p class="humidityValues" id="day2Humidity"></p>
+                <p class="windValues" id="day2Wind"></p>
+              </div>
+              <!--Day 3-->
+              <div class="icons">
+                <h4 id="day3Date"></h4>
+                <p class="weather" id="day3"></p>
+                <div class="image"><img src="" class="imgClass" id="img3"></div>
+                <p class="temperatureValues" id="day3Temp"></p>
+                <p class="humidityValues" id="day3Humidity"></p>
+                <p class="windValues" id="day3Wind"></p>
+              </div>
+              <!--Day 4-->
+              <div class="icons">
+                <h4 id="day4Date"></h4>
+                <p class="weather" id="day4"></p>
+                <div class="image"><img src="" class="imgClass" id="img4"></div>
+                <p class="temperatureValues" id="day4Temp"></p>
+                <p class="humidityValues" id="day4Humidity"></p>
+                <p class="windValues" id="day4Wind"></p>
+              </div>
+              <!--Day 5-->
+              <div class="icons">
+                <h4 id="day5Date"></h4>
+                <p class="weather" id="day5"></p>
+                <div class="image"><img src="" class="imgClass" id="img5"></div>
+                <p class="temperatureValues" id="day5Temp"></p>
+                <p class="humidityValues" id="day5Humidity"></p>
+                <p class="windValues" id="day5Wind"></p>
+              </div>
+            </div>
+          </div>
         </section>
         </div>
       </div>
