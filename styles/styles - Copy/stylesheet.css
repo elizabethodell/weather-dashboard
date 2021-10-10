@@ -7,3 +7,10 @@
     background-color: rgb(60, 60, 100);
     margin: 10px;
 }
+
+.list-group {
+    background-color: gray;
+    color: white;
+    text-align: center;
+    
+}
