@@ -1,39 +1,88 @@
-var button = document.querySelector(".btn")
-var inputValue = document.querySelector(".form-input")
-var city = document.querySelector(".city")
-var temp = document.querySelector(".temp")
-var wind = document.querySelector(".wind")
-var humidity = document.querySelector(".humidity")
-var uvIndex = document.querySelector(".uvIndex")
+window.addEventListener("load", () => {
 
-var day1Date = document.querySelector(".day1Date")
+    var button = document.querySelector(".btn")
+    var inputValue = document.querySelector(".form-input")
+    var city = document.querySelector(".city")
+    var temp = document.querySelector(".temp")
+    var wind = document.querySelector(".wind")
+    var humidity = document.querySelector(".humidity")
+    var uvIndex = document.querySelector(".uvIndex")
 
-var myDate = new Date();
-var currentMonth = myDate.getMonth() + 1;
-var currentDate = myDate.getDate();
-var currentYear = myDate.getFullYear();
-var date = currentMonth + "/" + currentDate + "/" + currentYear;
-console.log(date);
+    var day1Date = document.querySelector(".day1Date")
 
-var userCity = document.getElementById("search-input");
-var btnInsert = document.getElementById("search-button");
-var histories = document.getElementById("history");
+    var myDate = new Date();
+    var currentMonth = myDate.getMonth() + 1;
+    var currentDate = myDate.getDate();
+    var currentYear = myDate.getFullYear();
+    var date = currentMonth + "/" + currentDate + "/" + currentYear;
+    console.log(date);
 
-var cities = [];
-btnInsert.onclick = function (history) {
-    history.preventDefault();
+    var userCity = document.getElementById("search-input");
+    var btnInsert = document.getElementById("search-button");
+    var histories = document.getElementById("history");
+    var historyArray = [];
 
-    var userCityInput = userCity.value;
-    console.log(userCityInput);
+    var cities;
+    if (!JSON.parse(localStorage.getItem("history"))) {
+        cities = [];
+    }
+    else {
+        cities = JSON.parse(localStorage.getItem("history"))
+    }
 
-    cities = localStorage.getItem(userCityInput);
+    var displayHistory = () => {
+        //histories.innerHTML = "";
+            if (cities && cities.length > 0) {
+                console.log(cities)
+                cities.forEach(location => {
+                    console.log(location)
+                    var liEl = document.createElement("li");
+                    //liEl.classList.add("list-item")
+                    liEl.id = location;
+                    var text = location;
+                    liEl.textContent = text;
+        
+                    //    liEl.addEventListener("click", e => {
+                    //        if (e.target.tagName === "LI") {
+        
+                    //        }
+                    histories.appendChild(liEl);
+                })
+            }
+        }
 
-    if (userCityInput) {
-    localStorage.setItem("history", JSON.stringify(userCityInput));
-}
-    console.log(cities)
-    histories.innerHTML = userCityInput;
-}
+    var handleHistory = (userCityInput) => {
+        if (cities && cities.length > 0) {
+            var existingEntries = JSON.parse(localStorage.getItem("history"));
+            console.log(existingEntries);
+            existingEntries.push(userCityInput);
+            localStorage.setItem("history", JSON.stringify(userCityInput));
+            displayHistory();
+        }
+        else {
+            historyArray.push(userCityInput);
+            localStorage.setItem("history", JSON.stringify(historyArray));
+            displayHistory();
+        };
+    }
+
+    btnInsert.onclick = function () {
+        //history.preventDefault();
+
+        var userCityInput = userCity.value;
+        console.log(userCityInput);
+
+        if (!cities.includes(userCityInput)) {
+            handleHistory(userCityInput);
+            displayHistory();
+        }
+        displayHistory();
+        // if (userCityInput) {
+        //     localStorage.setItem("history", JSON.stringify(userCityInput));
+        // }
+        console.log(cities);
+    }
+    
 
 
 
@@ -93,4 +142,27 @@ btnInsert.onclick = function (history) {
 
 
     });
+
+    // var displayHistory = () => {
+    // //histories.innerHTML = "";
+    //     if (cities && cities.length > 0) {
+    //         console.log(cities)
+    //         cities.forEach(location => {
+    //             console.log(location)
+    //             var liEl = document.createElement("li");
+    //             //liEl.classList.add("list-item")
+    //             liEl.id = location;
+    //             var text = location;
+    //             liEl.textContent = text;
+    
+    //             //    liEl.addEventListener("click", e => {
+    //             //        if (e.target.tagName === "LI") {
+    
+    //             //        }
+    //             histories.appendChild(liEl);
+    //         })
+    //     }
+    // }
+    displayHistory();
+})
 
